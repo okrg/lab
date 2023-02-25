@@ -3,3 +3,4 @@ _site
 
 # Override implicit ignore rules
 !.stylelintrc.json
+!.eleventy.js

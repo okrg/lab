@@ -1,11 +1,32 @@
 import './styles/main.css';
-
 import Alpine from 'alpinejs';
 import persist from '@alpinejs/persist';
 
 window.Alpine = Alpine;
 
 Alpine.plugin(persist);
+
+Alpine.data('costCalculator', function () {
+  return {
+    programType: null,
+    gradeLevel: null,
+    schedule: null,
+    tuition: 0,
+    monthly: 0,
+    enrollmentDeposit: 0,
+    applicationFee: 0,
+    calculate() {},
+    init() {
+      Alpine.store('step', 'programType');
+      this.$watch('programType', function (val) {
+        Alpine.store('step', val);
+      });
+      this.$watch('gradeLevel', function (val) {
+        Alpine.store('step', val);
+      });
+    },
+  };
+});
 
 Alpine.data('banner', function () {
   return {

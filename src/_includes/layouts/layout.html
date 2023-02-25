@@ -3,8 +3,8 @@
   <head>
     {% include "partials/site-head.html" %}
   </head>
-  <body class="min-h-screen bg-white">
-    {{ content }}
+  <body class="min-h-screen bg-white" data-env="{{ node.env }}">
+    {{content}}
     <script type="module" src="/main.js"></script>
   </body>
 </html>
