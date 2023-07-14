@@ -1,0 +1,319 @@
+---
+layout: 'layouts/layout.html'
+title: 'Checkout Simulator'
+---
+<main id="main-content" tabindex="-1" x-data="checkoutSimulator" x-init="initCheckoutForm()" @submit-checkout-form.window="submitCheckoutForm()" @invalid-payment-info.window="invalidPaymentInfo()">
+  <div class="mx-auto max-w-4xl">
+    <h1 class="my-8 text-3xl font-bold leading-tight text-gray-900">
+      Checkout Simulator
+    </h1>
+  </div>
+  <div class="mx-auto max-w-4xl">
+
+    <form class="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16 mb-16">
+      <input type="hidden" id="payment_token" x-model="formData.payment_token">
+      <div>
+        <div x-show="showContactSection" x-transition>
+          <div>
+            <h2 class="text-lg font-medium text-gray-900">Contact information</h2>
+
+            <div class="mt-4">
+              <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+              <div class="mt-1">
+                <input type="email" id="email" x-model="formData.email" autocomplete="email" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+              <div class="mt-1">
+                <input type="text" x-model="formData.phone" id="phone" autocomplete="tel" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10 border-t border-gray-200 pt-10">
+            <h2 class="text-lg font-medium text-gray-900">Shipping information</h2>
+            <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
+              <div>
+                <label for="shipping_firstname" class="block text-sm font-medium text-gray-700">First name</label>
+                <div class="mt-1">
+                  <input type="text" id="shipping_firstname" x-model="formData.shipping_firstname" autocomplete="given-name" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+              <div>
+                <label for="shipping_lastname" class="block text-sm font-medium text-gray-700">Last name</label>
+                <div class="mt-1">
+                  <input type="text" id="shipping_lastname" x-model="formData.shipping_lastname" autocomplete="family-name" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label for="shipping_address1" class="block text-sm font-medium text-gray-700">Address</label>
+                <div class="mt-1">
+                  <input type="text" x-model="formData.shipping_address1" id="shipping_address1" autocomplete="street-address" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label for="shipping_address2" class="block text-sm font-medium text-gray-700">Apartment, suite, etc.</label>
+                <div class="mt-1">
+                  <input type="text" x-model="formData.shipping_address2" id="shipping_address2" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+              <div>
+                <label for="shipping_city" class="block text-sm font-medium text-gray-700">City</label>
+                <div class="mt-1">
+                  <input type="text" x-model="formData.shipping_city" id="shipping_city" autocomplete="address-level2" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+              <div>
+                <label for="shipping_country" class="block text-sm font-medium text-gray-700">Country</label>
+                <div class="mt-1">
+                  <select id="shipping_country" x-model="formData.shipping_country" autocomplete="country-name" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                    <option selected>United States</option>
+                    <option>Canada</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="shipping_state" class="block text-sm font-medium text-gray-700">State / Province</label>
+                <div class="mt-1">
+                  <input type="text" x-model="formData.shipping_state" id="shipping_state" autocomplete="address-level1" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+              <div>
+                <label for="shipping_zip" class="block text-sm font-medium text-gray-700">Postal code</label>
+                <div class="mt-1">
+                  <input type="text" x-model="formData.shipping_zip" id="shipping_zip" autocomplete="postal-code" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="mt-10 border-t border-gray-200 pt-10">
+            <h2 class="text-lg font-medium text-gray-900">Billing information</h2>
+            <div class="mt-6 flex items-center">
+              <input id="same-as-shipping" type="checkbox" checked class="h-4 w-4 border-gray-300 rounded text-yellow-600 focus:ring-yellow-500" x-model="formData.same_as_shipping">
+              <div class="ml-2">
+                <label for="same-as-shipping" class="text-sm font-medium text-gray-900">Same as shipping information</label>
+              </div>
+            </div>
+            <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4" x-show="!formData.same_as_shipping">
+              <div>
+                <label for="first_name" class="block text-sm font-medium text-gray-700">First name</label>
+                <div class="mt-1">
+                  <input type="text" id="first_name" x-model="formData.first_name" autocomplete="given-name" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+              <div>
+                <label for="last_name" class="block text-sm font-medium text-gray-700">Last name</label>
+                <div class="mt-1">
+                  <input type="text" id="last_name" x-model="formData.last_name" autocomplete="family-name" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label for="address1" class="block text-sm font-medium text-gray-700">Address</label>
+                <div class="mt-1">
+                  <input type="text" x-model="formData.address1" id="address1" autocomplete="street-address" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label for="address2" class="block text-sm font-medium text-gray-700">Apartment, suite, etc.</label>
+                <div class="mt-1">
+                  <input type="text" x-model="formData.address2" id="address2" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+              <div>
+                <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                <div class="mt-1">
+                  <input type="text" x-model="formData.city" id="city" autocomplete="address-level2" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+              <div>
+                <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                <div class="mt-1">
+                  <select id="country" x-model="formData.country" autocomplete="country-name" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                    <option selected>United States</option>
+                    <option>Canada</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="state" class="block text-sm font-medium text-gray-700">State / Province</label>
+                <div class="mt-1">
+                  <input type="text" x-model="formData.state" id="state" autocomplete="address-level1" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+              <div>
+                <label for="zip" class="block text-sm font-medium text-gray-700">Postal code</label>
+                <div class="mt-1">
+                  <input type="text" x-model="formData.zip" id="zip" autocomplete="postal-code" class="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <p class="text-center text-red-500 font-bold mt-3" x-text="confirmMessage"></p>
+
+        </div>
+
+
+
+        <div>
+          <h2 class="text-lg font-medium text-gray-900">Payment</h2>
+
+          <section id="ach-form">
+            <div class="flex items-center mt-6 pt-6 border-t border-gray-200">
+              <input id="etransfer" value="check" x-model="formData.payment" type="radio" checked class="focus:ring-yellow-500 h-4 w-4 text-yellow-600 border-gray-300">
+              <label for="etransfer" class="ml-3 block text-sm font-medium text-gray-700">Bank transfer (ACH)</label>
+            </div>
+
+
+            <div class="mt-6 grid grid-cols-4 gap-y-6 gap-x-4">
+              <!--x-show="formData.payment == 'check'"-->
+              <div class="col-span-4">
+                <label for="checkname" class="block text-sm font-medium text-gray-700">Name on Account</label>
+                <div class="mt-1">
+                  <div id="checkname"></div>
+                </div>
+              </div>
+
+              <div class="col-span-4">
+                <label for="checkaba" class="block text-sm font-medium text-gray-700">Routing number</label>
+                <div class="mt-1">
+                  <div id="checkaba"></div>
+                </div>
+              </div>
+
+              <div class="col-span-4">
+                <label for="checkaccount" class="block text-sm font-medium text-gray-700">Account number</label>
+                <div class="mt-1">
+                  <div id="checkaccount"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+          <section id="credit-form">
+            <fieldset class="mt-4">
+              <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                <div class="flex items-center">
+                  <input id="credit-card" value="creditcard" x-model="formData.payment" type="radio"  class="focus:ring-yellow-500 h-4 w-4 text-yellow-600 border-gray-300">
+                  <label for="credit-card" class="ml-3 block text-sm font-medium text-gray-700">Credit card</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="mt-6 grid grid-cols-4 gap-y-6 gap-x-4">
+              <!--x-show="formData.payment == 'creditcard'"-->
+              <div class="col-span-4">
+                <label for="ccnumber" class="block text-sm font-medium text-gray-700">Card number</label>
+                <div class="mt-1">
+                  <div id="ccnumber"></div>
+                </div>
+              </div>
+
+              <div class="col-span-3">
+                <label for="ccexp" class="block text-sm font-medium text-gray-700">Expiration date (MM/YY)</label>
+                <div class="mt-1">
+                  <div id="ccexp"></div>
+                </div>
+              </div>
+
+              <div>
+                <label for="cvv" class="block text-sm font-medium text-gray-700">CVV</label>
+                <div class="mt-1">
+                  <div id="cvv"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <div class="mt-10 lg:mt-0">
+        <div class="sticky top-6">
+          <div class="mt-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+            <h3 class="sr-only">Items in your cart</h3>
+            <ul role="list" class="divide-y divide-gray-200">
+              <li class="flex py-6 px-4 sm:px-6">
+                <div class="flex-1 flex flex-col">
+                  <div class="flex">
+                    <div class="min-w-0 flex-1">
+                      <h4 class="font-bold text-xl text-gray-700 hover:text-gray-800" x-html="modelLabel"></h4>
+                      <p class="mt-1 text-sm text-gray-500" x-text="sidingLabel"></p>
+                      <p class="mt-1 text-sm text-gray-500" x-text="sidingColorLabel"></p>
+                      <p class="mt-1 text-sm text-gray-500" x-text="doorLabel"></p>
+                      <p class="mt-1 text-sm text-gray-500" x-text="trimLabel"></p>
+                      <p class="mt-1 text-sm text-gray-500" x-text="eavesLabel"></p>
+                      <p class="mt-1 text-sm text-gray-500" x-text="floorLabel"></p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- More products... -->
+            </ul>
+            <dl class="border-t border-gray-200 py-6 px-4 space-y-6 sm:px-6">
+              <div class="flex items-center justify-between">
+                <dt class="text-sm">Shipping</dt>
+                <dd class="text-sm font-medium text-gray-900">Included</dd>
+              </div>
+              <div class="flex items-center justify-between">
+                <dt class="text-sm">Total Cost</dt>
+                <dd class="text-sm font-medium text-gray-900" x-text="formData.formattedAmount"></dd>
+              </div>
+              <div class="flex items-center justify-between" x-show="showDepositLineItem">
+                <dt class="text-sm">Deposit</dt>
+                <dd class="text-sm font-medium text-gray-900" x-text="formData.formattedDepositAmount"></dd>
+              </div>
+              <div class="flex items-center justify-between" x-show="formData.payment == 'creditcard'">
+                <dt class="text-sm">Credit Card Fee</dt>
+                <dd class="text-sm font-medium text-gray-900" x-text="formData.formattedFeeAmount"></dd>
+              </div>
+
+              <div x-show="formData.payment == 'creditcard'" class="flex items-center justify-between border-t border-gray-200 pt-6">
+                <dt class="text-base font-medium">Payment Amount</dt>
+                <dd class="text-base font-medium text-gray-900" x-text="formData.formattedTotalCreditOrderAmount"></dd>
+              </div>
+              <div x-show="formData.payment == 'check'" class="flex items-center justify-between border-t border-gray-200 pt-6">
+                <dt class="text-base font-medium">Payment Amount</dt>
+                <dd class="text-base font-medium text-gray-900" x-text="formData.formattedTotalCheckOrderAmount"></dd>
+              </div>
+
+            </dl>
+
+            <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+              <button type="submit" id="confirmOrder" class="mt-6 w-full bg-black border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500 disabled:bg-gray-300" @click.prevent="startPaymentRequest()">Confirm order</button>
+              <p class="text-center text-red-500 font-bold mt-3" x-text="confirmMessage"></p>
+            </div>
+          </div>
+          <p class="m-6 text-center text-sm">Got questions? <a class="underline" href="/contact-us/">Contact us online</a> or call us at 888-900-3933 to speak to one of our advisors.</p>
+
+        </div>
+      </div>
+    </form>
+
+    <div class="p-4 border-gray-200 border rounded mt-4" x-show="true">
+      <h2 class="text-xl font-bold">Response</h2>
+      <pre class="text-sm" x-html="checkoutResponse"></pre>
+    </div>
+  </div>
+</main>

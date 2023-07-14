@@ -1,0 +1,74 @@
+<fieldset class="mt-8" x-show="$store.step == 'summerCamp'" x-transition>
+  <div class="flex mb-8">
+    <button class="mr-auto" @click="$store.step = 'programType'">&leftarrow; Back</button>
+  </div>
+  <div class="relative -space-y-px rounded-md bg-white">
+    <h2 class="text-base bg-gray-500 text-white font-bold p-4">Summer Camp</h2>
+    <label :class="schedule == $el.querySelector('input').value ? 'font-bold' : 'font-base'" class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="fullDayJunAug" data-program="Summer Camp" @click="selectSchedule($event)" x-model="schedule" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="w-full">
+          <div class="flex w-full ml-3 font-medium">
+            <div class="w-3/5">Early Childhood</div>
+            <div class="w-2/5 text-right text-gray-500">&nbsp;</div>
+          </div>
+          <div class="flex w-full ml-3 text-xs">
+            <div class="w-3/5">Ages 3-6</div>
+            <div class="w-2/5 text-right text-gray-500">8:30am - 3:30pm</div>
+          </div>
+          <div class="flex w-full ml-3 text-xs">
+            <div class="w-3/5">Full day (Jun - Aug) 9 weeks</div>
+            <div class="w-2/5 text-right text-gray-500"></div>
+          </div>
+          <div class="flex w-full ml-3 text-xs">
+            <div class="w-3/5">Full 9 weeks = 5% discount</div>
+            <div class="w-2/5 text-right text-gray-500"></div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <label :class="schedule == $el.querySelector('input').value ? 'font-bold' : 'font-base'" class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="morningsOnlyJunAug" data-program="Summer Camp" @click="selectSchedule($event)" x-model="schedule" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="w-full">
+          <div class="flex w-full ml-3 font-medium">
+            <div class="w-3/5">Early Childhood</div>
+            <div class="w-2/5 text-right text-gray-500">&nbsp;</div>
+          </div>
+          <div class="flex w-full ml-3 text-xs">
+            <div class="w-3/5">Ages 3-6</div>
+            <div class="w-2/5 text-right text-gray-500">8:30am - 12:30pm</div>
+          </div>
+          <div class="flex w-full ml-3 text-xs">
+            <div class="w-3/5">Mornings only (Jun - Aug) 9 weeks</div>
+            <div class="w-2/5 text-right text-gray-500"></div>
+          </div>
+          <div class="flex w-full ml-3 text-xs">
+            <div class="w-3/5">Full 9 weeks = 5% discount</div>
+            <div class="w-2/5 text-right text-gray-500"></div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <label :class="schedule == $el.querySelector('input').value ? 'font-bold' : 'font-base'" class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="specialtyCamps" data-program="Summer Camp" @click="selectSchedule($event)" x-model="schedule" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="w-full">
+          <div class="flex w-full ml-3 font-medium">
+            <div class="w-3/5">Grades 1-8</div>
+            <div class="w-2/5 text-right text-gray-500"> </div>
+          </div>
+          <div class="flex w-full ml-3 text-xs">
+            <div class="w-3/5">Specialty / Athletic camps</div>
+            <div class="w-2/5 text-right text-gray-500">Various</div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+
+
+  </div>
+</fieldset>

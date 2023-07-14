@@ -1,0 +1,88 @@
+<fieldset class="mt-8" x-show="$store.step == 'preschool'" x-transition>
+  <div class="flex mb-8">
+    <button class="mr-auto" @click="$store.step = 'earlyChildhood'">&leftarrow; Back</button>
+  </div>
+  <div class="relative -space-y-px rounded-md bg-white">
+    <h2 class="text-base bg-gray-500 text-white font-bold p-4">Preschool (2.5 - 4 yrs)</h2>
+    <label :class="schedule == $el.querySelector('input').value ? 'font-bold' : 'font-base'" class="relative border px-4 py-8 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="mTMornings" data-program="Preschool" @click="selectSchedule($event)" x-model="schedule" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="w-full">
+          <div class="flex w-full ml-3 ">
+            <div class="w-3/5">Monday - Tuesday mornings</div>
+            <div class="w-2/5 text-right text-gray-500">8:30am - 12:30pm</div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <label :class="schedule == $el.querySelector('input').value ? 'font-bold' : 'font-base'" class="relative border px-4 py-8 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="mTFullDay" data-program="Preschool" @click="selectSchedule($event)" x-model="schedule" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="w-full">
+          <div class="flex w-full ml-3 ">
+            <div class="w-3/5">Monday - Tuesday full day</div>
+            <div class="w-2/5 text-right text-gray-500">8:30am - 3:00pm</div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <label :class="schedule == $el.querySelector('input').value ? 'font-bold' : 'font-base'" class="relative border px-4 py-8 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="wThFMornings" data-program="Preschool" @click="selectSchedule($event)" x-model="schedule" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="w-full">
+          <div class="flex w-full ml-3 ">
+            <div class="w-3/5">Wednesday - Friday mornings</div>
+            <div class="w-2/5 text-right text-gray-500">8:30am - 12:30pm</div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <label :class="schedule == $el.querySelector('input').value ? 'font-bold' : 'font-base'" class="relative border px-4 py-8 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="wThFFullDay" data-program="Preschool" @click="selectSchedule($event)" x-model="schedule" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="w-full">
+          <div class="flex w-full ml-3 ">
+            <div class="w-3/5">Wednesday - Friday full days</div>
+            <div class="w-2/5 text-right text-gray-500">8:30am - 3:00pm</div>
+          </div>
+          <div class="flex w-full ml-3 ">
+            <div class="w-3/5">* Thursdays</div>
+            <div class="w-2/5 text-right text-gray-500">8:30am - 2:00pm</div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <label :class="schedule == $el.querySelector('input').value ? 'font-bold' : 'font-base'" class="relative border px-4 py-8 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="pmFMornings" data-program="Preschool" @click="selectSchedule($event)" x-model="schedule" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="w-full">
+          <div class="flex w-full ml-3 ">
+            <div class="w-3/5">Monday - Friday mornings</div>
+            <div class="w-2/5 text-right text-gray-500">8:30am - 12:30pm</div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <label :class="schedule == $el.querySelector('input').value ? 'font-bold' : 'font-base'" class="relative border px-4 py-8 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="pmFFullDay" data-program="Preschool" @click="selectSchedule($event)" x-model="schedule" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="w-full">
+          <div class="flex w-full ml-3 ">
+            <div class="w-3/5">Monday - Friday full days</div>
+            <div class="w-2/5 text-right text-gray-500">8:30am - 3:00pm</div>
+          </div>
+          <div class="flex w-full ml-3 ">
+            <div class="w-3/5">* Thursdays</div>
+            <div class="w-2/5 text-right text-gray-500">8:30am - 2:00pm</div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+  </div>
+</fieldset>

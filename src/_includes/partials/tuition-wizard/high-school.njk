@@ -1,0 +1,28 @@
+<fieldset class="mt-8" x-show="$store.step == 'highSchool'" x-transition>
+  <div class="mb-8">
+    <button class="mr-auto" @click="$store.step = 'programType'">&leftarrow; Back</button>
+  </div>
+  <div class="relative -space-y-px rounded-md bg-white">
+    <h2 class="text-base bg-gray-600 text-white font-bold p-4">High School</h2>
+    <label :class="schedule == $el.querySelector('input').value ? 'font-bold' : 'font-base'" class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="grades9To12" data-program="High School" @click="selectSchedule($event)" x-model="schedule" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="w-full">
+          <div class="flex w-full ml-3 font-medium">
+            <div class="w-3/5">Grades 9 - 12</div>
+            <div class="w-2/5 text-right text-gray-500">&nbsp;</div>
+          </div>
+          <div class="flex w-full ml-3 text-xs">
+            <div class="w-3/5">Monday - Friday</div>
+            <div class="w-2/5 text-right text-gray-500">8:30am - 3:25pm</div>
+          </div>
+          <div class="flex w-full ml-3 text-xs">
+            <div class="w-3/5">* Thursdays</div>
+            <div class="w-2/5 text-right text-gray-500">8:30am - 2:25pm</div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+  </div>
+</fieldset>

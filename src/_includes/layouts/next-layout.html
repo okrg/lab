@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html class="leading-tight text-gray-900 antialiased" lang="en">
+  <head>
+    {% include "partials/site-head.html" %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.2.2/babylon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@5.9.1/babylonjs.loaders.min.js"></script>
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+    <script src="/assets/next-harp.js"></script>
+  </head>
+  <body class="min-h-screen bg-white" data-env="{{ node.env }}">
+    <header class="mb-12 bg-gray-100 py-12 text-center text-xs uppercase">
+      Header
+    </header>
+    {{ content}}
+    <footer class="bg-gray-100 py-12 text-center text-xs uppercase">
+      Footer
+    </footer>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

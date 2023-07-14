@@ -1,0 +1,39 @@
+<fieldset x-show="$store.step == 'programType'" x-transition>
+  <div class="relative -space-y-px rounded-md bg-white">
+    <label class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="earlyChildhood" @click="selectProgramType($event)" x-model="programType" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="ml-3 font-medium">Early Childhood</div>
+      </div>
+
+    </label>
+
+    <label class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="lowerSchool"  @click="selectProgramType($event)" x-model="programType"  class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="ml-3 font-medium">Lower School - Middle School</div>
+      </div>
+
+
+    </label>
+
+    <label class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="highSchool"  @click="selectProgramType($event)" x-model="programType"  class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="ml-3 font-medium">High School</div>
+      </div>
+
+
+    </label>
+
+    <label class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="summerCamp" @click="selectProgramType($event)" x-model="programType"  class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="ml-3 font-medium">Summer Camp</div>
+      </div>
+
+
+    </label>
+
+  </div>
+</fieldset>

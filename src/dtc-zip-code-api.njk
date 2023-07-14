@@ -1,0 +1,24 @@
+---
+layout: 'layouts/layout.html'
+title: 'Zip Code Api Tester'
+---
+<main id="main-content" tabindex="-1" x-data="zipCodeApi">
+  <div class="mx-auto max-w-4xl">
+    <h1 class="my-8 text-3xl font-bold leading-tight text-gray-900">
+      DTC Zip Code API
+    </h1>
+  </div>
+  <div class="mx-auto max-w-4xl">
+
+    <!-- A form that will submit a zip code to the API -->
+    <form class="flex flex-col gap-4" x-ref="zipCodeForm" x-on:submit.prevent="submitZipCode">
+      <label for="zip-code">Enter a zip code</label>
+      <input class="border border-gray-300 p-2 rounded" type="text" id="zip-code" name="zip-code" x-model="zipCode" />
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Submit</button>
+    </form>
+    <div class="p-4 border-gray-200 border rounded mt-4" x-show="zipCodeResponse">
+      <h2 class="text-xl font-bold">Response</h2>
+      <pre class="text-sm" x-html="zipCodeResponse"></pre>
+  </div>
+
+</main>

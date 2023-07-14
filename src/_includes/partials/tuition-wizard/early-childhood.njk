@@ -1,0 +1,23 @@
+<fieldset class="mt-8" x-show="$store.step === 'earlyChildhood'" x-transition>
+  <div class="flex mb-8">
+    <button class="mr-auto" @click="$store.step = 'programType'">&leftarrow; Back</button>
+
+  </div>
+  <div class="relative -space-y-px rounded-md bg-white">
+    <h2 class="text-base bg-gray-500 text-white font-bold p-4">Early Childhood</h2>
+    <label class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" value="preschool" @click="selectGradeLevel($event)"  x-model="gradeLevel" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="ml-3 font-medium">Preschool (2.5 - 4 yrs)</div>
+      </div>
+    </label>
+
+    <label class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 focus:outline-none">
+      <div class="flex items-center text-sm">
+        <input type="radio" name="pricing-plan" value="kindergarten"  @click="selectGradeLevel($event)" x-model="gradeLevel"  class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+        <div class="ml-3 font-medium">Kindergarten (4.5 - 6 yrs)</div>
+      </div>
+    </label>
+
+  </div>
+</fieldset>

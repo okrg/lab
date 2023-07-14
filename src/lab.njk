@@ -3,174 +3,70 @@ layout: 'layouts/layout.html'
 title: 'Home'
 ---
 <main id="main-content" tabindex="-1" x-data="costCalculator">
-  <div class="mx-auto max-w-3xl">
+  <div class="mx-auto max-w-4xl">
     <h1 class="my-8 text-3xl font-bold leading-tight text-gray-900">
       Cost Calculator
     </h1>
   </div>
-  <div class="mx-auto max-w-3xl">
+  <div class="mx-auto max-w-4xl">
 
     <div class="flex gap-8">
       <div class="w-full md:w-1/2">
-        <h2 class="text-xl font-bold">Select program type</h2>
-        <h2 x-text="programType" class="text-xl font-bold mt-8"></h2>
 
-        <fieldset class="mt-8" x-show="$store.step == 'programType'" x-transition>
-
-          <div class="relative -space-y-px rounded-md bg-white">
-            <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
-            <label class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-              <span class="flex items-center text-sm">
-                <input type="radio" value="earlyChildhood" x-model="programType" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-                <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                <span class="ml-3 font-medium">Early Childhood</span>
-              </span>
-              <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-              <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right">Up to 5 active job postings</span>
-            </label>
-
-            <label class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-              <span class="flex items-center text-sm">
-                <input type="radio" name="pricing-plan" value="lowerMiddle" x-model="programType"  class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-                <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                <span class="ml-3 font-medium">Lower School - Middle School</span>
-              </span>
-              <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-              <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right">Up to 5 active job postings</span>
-            </label>
-
-            <label class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-              <span class="flex items-center text-sm">
-                <input type="radio" value="highSchool" x-model="programType"  class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-                <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                <span class="ml-3 font-medium">High School</span>
-              </span>
-              <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-              <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right">Up to 5 active job postings</span>
-            </label>
-
-            <label class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-              <span class="flex items-center text-sm">
-                <input type="radio" value="summerCamp" x-model="programType"  class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-                <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                <span class="ml-3 font-medium">Summer Camp</span>
-              </span>
-              <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-              <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right">Up to 5 active job postings</span>
-            </label>
-
-          </div>
-        </fieldset>
-
-        <fieldset class="mt-8" x-show="$store.step === 'earlyGradeLevel'" x-transition>
-
-          <div class="relative -space-y-px rounded-md bg-white">
-            <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
-            <label class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-              <span class="flex items-center text-sm">
-                <input type="radio" value="Startup" x-model="gradeLevel" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-                <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                <span class="ml-3 font-medium">PreK</span>
-              </span>
-              <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-              <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right">Up to 5 active job postings</span>
-            </label>
-
-            <label class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-              <span class="flex items-center text-sm">
-                <input type="radio" name="pricing-plan" value="Middle" x-model="gradeLevel"  class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-                <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                <span class="ml-3 font-medium">Kindergarten</span>
-              </span>
-              <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-              <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right">Up to 5 active job postings</span>
-            </label>
-
-          </div>
-        </fieldset>
-
-
-        <fieldset class="mt-8" x-show="$store.step == 'kinderSchedule'" x-transition>
-          <h3>Select Schedule</h3>
-          <div class="relative -space-y-px rounded-md bg-white">
-            <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
-            <label class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-              <span class="flex items-center text-sm">
-                <input type="radio" value="s1" x-model="schedule" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-                <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                <span class="ml-3 font-medium">Startup</span>
-              </span>
-              <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-              <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right">Up to 5 active job postings</span>
-            </label>
-
-            <label class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-              <span class="flex items-center text-sm">
-                <input type="radio" value="s2" x-model="schedule"  class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-                <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                <span class="ml-3 font-medium">Startup</span>
-              </span>
-              <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-              <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right">Up to 5 active job postings</span>
-            </label>
-
-            <label class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none">
-              <span class="flex items-center text-sm">
-                <input type="radio" value="s3" x-model="schedule"  class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-                <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                <span class="ml-3 font-medium">Startup</span>
-              </span>
-              <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-              <span class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right">Up to 5 active job postings</span>
-            </label>
-
-
-          </div>
-        </fieldset>
-
+        {% include "partials/tuition-wizard/program-types.njk" %}
+          {% include "partials/tuition-wizard/early-childhood.njk" %}
+            {% include "partials/tuition-wizard/preschool.njk" %}
+            {% include "partials/tuition-wizard/kindergarten.njk" %}
+          {% include "partials/tuition-wizard/lower-school.njk" %}
+          {% include "partials/tuition-wizard/high-school.njk" %}
+          {% include "partials/tuition-wizard/summer-camp.njk" %}
 
       </div>
       <div class="w-full md:w-1/2">
 
         <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-
-          <div class="flex justify-between px-4 py-5 sm:px-6">
-            <div>
-              <p class="font-bold">Comprehensive Tuition</p>
-              <p class="text-sm text-gray-500">Includes all Facilities and Supply Fees, Class trips and sports fees.
-                Instrument rentals and lessons not included in tuition.</p>
-            </div>
-            <div class="font-bold">$20,160</div>
+          <div class="text-sm px-4 py-5 sm:px-6">
+            <div class="w-full font-bold" x-html="selectedProgramText"></div>
+            <div class="w-full -ml-3 font-bold" x-html="selectedScheduleText"></div>
           </div>
 
           <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
             <dl class="sm:divide-y sm:divide-gray-200">
               <div class="flex justify-between  px-4 py-5 sm:px-6">
-                <div>
-                  <p class="font-bold">12 Monthly Payments</p>
-                  <p class="text-sm text-gray-500">Amount shown reflects tuition deposit.
+                <div class="w-1/2">
+                  <p class="text-base">Comprehensive tuition</p>
+                  <p class="text-xs text-gray-500">Includes all Facilities and Supply Fees, Class trips and sports fees.
+                    Instrument rentals and lessons not included in tuition.</p>
+                </div>
+                <div class="font-bold text-sm" x-html="tuition"></div>
+              </div>
+              <div class="flex justify-between  px-4 py-5 sm:px-6">
+                <div class="w-1/2">
+                  <p class="text-base">12 Monthly payments</p>
+                  <p class="text-xs text-gray-500">Amount shown reflects tuition deposit.
                     Exact monthly payment amount will vary. </p>
                 </div>
-                <div class="font-bold">$1,584.17/mo</div>
+                <div class="font-bold text-sm" x-text="monthly"></div>
               </div>
               <div class="flex justify-between  px-4 py-5 sm:px-6">
-                <div>
-                  <p class="font-bold">Enrollment Deposit</p>
-                  <p class="text-sm text-gray-500">Due when the Enrollment Contract is signed. Applied in full toward tuition.  </p>
+                <div class="w-1/2">
+                  <p class="text-base">Enrollment deposit</p>
+                  <p class="text-xs text-gray-500">Due when the Enrollment Contract is signed. Applied in full toward tuition.  </p>
                 </div>
-                <div class="font-bold">$1,150</div>
+                <div class="font-bold text-sm" x-text="enrollmentDeposit"></div>
               </div>
               <div class="flex justify-between  px-4 py-5 sm:px-6">
-                <div>
-                  <p class="font-bold">Application Fee</p>
+                <div class="w-1/2">
+                  <p class="text-base">Application fee</p>
                 </div>
-                <div class="font-bold">$90</div>
+                <div class="font-bold text-sm" x-text="applicationFee"></div>
               </div>
               <div class="py-4 sm:gap-4 sm:py-5 sm:px-6">
                 <div class="py-4">
-                  <p class="text-sm text-center">Start your application online today.</p>
-                  <a href="#" class="block text-center text-white bg-blue-500 rounded-md py-2 px-4 mt-4 hover:bg-blue-600">Start your application online today</a>
-                  <p class="text-sm text-center mt-4"><a href="#">Learn more about our Tuition Assistance program</a></p>
+                  <p class="text-xs text-center">Have questions about our programs?</p>
+                  <p class="text-xs text-center"><a class="underline" href="https://shiningmountainwaldorf.org/contact-us/">Contact us to speak with an advisor</a>.</p>
+                  <a href="https://shiningmountainwaldorf.myschoolapp.com/app#login/apply" target="_blank" class="block text-center text-white bg-blue-500 rounded-md py-2 px-4 mt-4 hover:bg-blue-600">Start your application online today</a>
+                  <p class="text-xs text-center mt-4"><a class="underline" href="https://shiningmountainwaldorf.org/admissions/tuition-assistance/">Learn more about our Tuition Assistance program</a></p>
                 </div>
               </div>
             </dl>
